@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://taymuur.github.io/tsgill/sitemap.xml
