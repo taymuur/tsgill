@@ -60,43 +60,16 @@ $(document).ready(function () {
   // Typewriter effect
   const typewriterElement = document.getElementById('typewriter');
   if (typewriterElement) {
-    const texts = [
-      'AI Researcher',
-      'Data Scientist',
-      'Machine Learning Engineer',
-      'Biomedical Expert',
-      'Computer Vision Specialist',
-      'Neural Network Architect'
-    ];
-
-    let textIndex = 0;
+    const text = 'Aspiring Data Scientist & Bioinformatician';
     let charIndex = 0;
-    let isDeleting = false;
-    let typeSpeed = 100;
+    const typeSpeed = 100;
 
     function typeEffect() {
-      const currentText = texts[textIndex];
-
-      if (isDeleting) {
-        typewriterElement.textContent = currentText.substring(0, charIndex - 1);
-        charIndex--;
-        typeSpeed = 50;
-      } else {
-        typewriterElement.textContent = currentText.substring(0, charIndex + 1);
+      if (charIndex < text.length) {
+        typewriterElement.textContent = text.substring(0, charIndex + 1);
         charIndex++;
-        typeSpeed = 100;
+        setTimeout(typeEffect, typeSpeed);
       }
-
-      if (!isDeleting && charIndex === currentText.length) {
-        typeSpeed = 2000; // pause at end
-        isDeleting = true;
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        textIndex = (textIndex + 1) % texts.length;
-        typeSpeed = 500; // pause before typing new text
-      }
-
-      setTimeout(typeEffect, typeSpeed);
     }
 
     // Start the typewriter effect
