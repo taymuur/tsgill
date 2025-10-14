@@ -2,7 +2,7 @@
 
 <div align="center">
 
-**AI Researcher & Data Scientist Portfolio**
+**Aspiring Data Scientist & Bioinformatician Portfolio**
 
 AI researcher and data scientist transforming healthcare through innovative AI solutions. Expertise in machine learning, computer vision, and biomedical signal processing.
 
