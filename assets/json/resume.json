@@ -1,0 +1,255 @@
+{
+  "basics": {
+    "name": "Taimur Shahzad Gill",
+    "label": "AI Researcher & Data Scientist",
+    "image": "",
+    "email": "taimuur.shahzad@gmail.com",
+    "phone": "+92-321-248-9262",
+    "url": "https://taimur-shahzad.github.io/portfolio",
+    "summary": "A research-focused electrical engineer with 1,310+ hours of research experience in AI, computer vision, and biomedical signal processing. Published 4 first-author papers with proven ability to develop novel computational architectures for complex healthcare challenges. Seeking to advance digital health solutions through AI-driven systems that translate complex biological data into actionable clinical insights for improved patient outcomes.",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "Karachi",
+      "countryCode": "PK",
+      "region": "Pakistan"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "taymuur",
+        "url": "https://github.com/taymuur"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "taimur-shahzad-gill",
+        "url": "https://linkedin.com/in/taimur-shahzad-gill"
+      },
+      {
+        "network": "ORCID",
+        "username": "0000-0003-2467-1688",
+        "url": "https://orcid.org/0000-0003-2467-1688"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Nixon Research Group, University of Liverpool",
+      "position": "Honorary Research Assistant",
+      "location": "Liverpool, United Kingdom",
+      "url": "",
+      "startDate": "2025-05-01",
+      "endDate": "Present",
+      "summary": "",
+      "highlights": [
+        "Developed and evaluated TimeGPT for Influenza surveillance, achieving RMSE of 873.27 for 1-week forecast, outperforming traditional models (NumPy, Matplotlib, Pandas, Scikit-learn, and TimeGPT)",
+        "Led seasonal pattern analysis for SFTS in South Korea using Complex EMD, harmonic regression (R²=0.848), and bicoherence analysis to identify multi-scale disease transmission cycles (Python, R, and Epidemiological Modelling)"
+      ]
+    },
+    {
+      "name": "Asia Petroleum Limited",
+      "position": "Project Engineer",
+      "location": "Karachi, Pakistan",
+      "url": "",
+      "startDate": "2023-11-01",
+      "endDate": "2025-09-17",
+      "summary": "",
+      "highlights": [
+        "Developed a hybrid ESN-LSTM model achieving R-squared of 0.975 and DA of 94.12% on long-short term forecasts of the KSE-100 Index (published in ICRAI 2024) (Python, NumPy, and Scikit-learn)",
+        "Implemented real-time data visualization dashboards improving project delivery timelines by 20% (Power BI)"
+      ]
+    },
+    {
+      "name": "Additech Sim, University of Stuttgart",
+      "position": "Data Science Intern",
+      "location": "Stuttgart, Germany",
+      "url": "",
+      "startDate": "2022-11-01",
+      "endDate": "2023-05-01",
+      "summary": "",
+      "highlights": [
+        "Developed a Reinforcement Learning model which optimised pressure of shaft-hub connection 98% faster than the existing Q-learning approach (Python, Stablebaselines-3, OpenAI Gymnasium, NumPy, Pandas, and Scikit-learn)",
+        "Applied and evaluated deep reinforcement learning using Python, StableBaselines-3, and OpenAI Gymnasium"
+      ]
+    },
+    {
+      "name": "PRL, National University of Sciences and Technology",
+      "position": "Research Intern",
+      "location": "Karachi, Pakistan",
+      "url": "",
+      "startDate": "2020-09-01",
+      "endDate": "2021-08-01",
+      "summary": "",
+      "highlights": [
+        "Led a team of 6 undergraduate students to design and develop a working prototype of power theft detection system (published in ICET 2023) (Python with Raspberry Pi, ThingSpeak, NumPy, and Pandas)",
+        "Programmed Raspberry Pi for real-time transmission of voltage, current, and power factor readings to the ThingSpeak server"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of East Anglia",
+      "location": "Norwich, United Kingdom",
+      "url": "https://www.uea.ac.uk/",
+      "area": "Data Science for Biology",
+      "studyType": "Masters",
+      "startDate": "2025-09-01",
+      "endDate": "Present",
+      "score": "",
+      "courses": [
+        "Data Science & Bioinformatics",
+        "Statistics for Biologists",
+        "Data Mining"
+      ]
+    },
+    {
+      "institution": "National University of Sciences and Technology",
+      "location": "Islamabad, Pakistan",
+      "url": "https://www.nust.edu.pk/",
+      "area": "Electrical Engineering",
+      "studyType": "Bachelors",
+      "startDate": "2019-09-01",
+      "endDate": "2023-06-01",
+      "score": "3.31/4.00",
+      "courses": [
+        "Machine Learning (A)",
+        "Digital Image Processing (A)",
+        "AI & Decision Support Systems (B+)",
+        "Numerical Methods (B+)",
+        "Calculus & Analytical Geometry (A)",
+        "Digital Signal Processing (B+)"
+      ]
+    },
+    {
+      "institution": "Army Public School and Colleges System",
+      "location": "Karachi, Pakistan",
+      "url": "",
+      "area": "GCE Ordinary and Advanced Level",
+      "studyType": "",
+      "startDate": "2013-05-01",
+      "endDate": "2019-06-01",
+      "score": "2A*s, 5As, and 1B",
+      "courses": []
+    }
+  ],
+  "awards": [
+    {
+      "title": "Highest Achiever in Class of 2019",
+      "date": "2019-06-01",
+      "awarder": "Army Public School and Colleges System",
+      "url": "",
+      "summary": "Graduated with school-level distinction"
+    },
+    {
+      "title": "Runner-up in Hi-Robotec Robofiesta 2.0",
+      "date": "2022-01-01",
+      "awarder": "NUST Robotics and Artificial Intelligence",
+      "url": "",
+      "summary": "Co-founder of NUST Robotics and Artificial Intelligence"
+    },
+    {
+      "title": "Winner of Inter-College Cycling Championship",
+      "date": "2018-01-01",
+      "awarder": "Army Public School and Colleges System",
+      "url": "",
+      "summary": "Served as the College Head Boy with active participation in sports"
+    }
+  ],
+  "publications": [
+    {
+      "name": "Attention-Based Deep Convolutional Neural Network for Classification of Generalized and Focal Epileptic Seizures",
+      "publisher": "Epilepsy & Behavior",
+      "releaseDate": "2024-02-01",
+      "url": "",
+      "summary": "Taimur Shahzad Gill, Muhammad Ayaz Shirazi, Syed Sajjad Haider Zaidi. Epilepsy & Behavior 155.109732 (Feb. 2024)"
+    },
+    {
+      "name": "Time Series Forecasting of KSE-100 Index Using a Hybrid ESN-LSTM Model",
+      "publisher": "2024 International Conference on Robotics and Automation in Industry (ICRAI)",
+      "releaseDate": "2024-01-01",
+      "url": "",
+      "summary": "Taimur Shahzad Gill, Syed Ibrahim Zahid"
+    },
+    {
+      "name": "Early Detection of Mesothelioma Using Machine Learning Algorithms",
+      "publisher": "The 7th International Electrical Engineering Conference",
+      "releaseDate": "2023-01-01",
+      "url": "",
+      "summary": "Taimur Shahzad Gill, Muhammad Ayaz Shirazi, Syed Sajjad Haider Zaidi"
+    },
+    {
+      "name": "IoT Based Smart Power Quality Monitoring and Electricity Theft Detection System",
+      "publisher": "2021 16th International Conference on Emerging Technologies (ICET)",
+      "releaseDate": "2021-01-01",
+      "url": "",
+      "summary": "Taimur Shahzad Gill, Durr E Shehwar, Hira Memon, Sobia Khanam, Ali Ahmed, Urooj Shaukat, Abdul Mateen, Syed Sajjad Haider Zaidi"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Programming",
+      "level": "Master",
+      "icon": "fa-solid fa-code",
+      "keywords": [
+        "Python (Pandas, NumPy, Scikit-learn, Matplotlib, Tensorflow, Keras)",
+        "MATLAB",
+        "ESP-IDF",
+        "C/C++",
+        "HTML/CSS",
+        "SQL"
+      ]
+    },
+    {
+      "name": "Tools & Frameworks",
+      "level": "Master",
+      "icon": "fa-solid fa-tools",
+      "keywords": [
+        "Linux",
+        "LaTeX (Overleaf/R Markdown)",
+        "Tableau",
+        "SPSS",
+        "KNIME",
+        "Power BI",
+        "Microsoft Office Suite",
+        "Firebase",
+        "RTOS",
+        "Git"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "MHA-CNN for Classification of Generalised Epileptic Seizures",
+      "summary": "Proposed a novel CNN architecture with a multi-headed attention mechanism to classify the 5 types of generalised epileptic seizures.",
+      "highlights": [
+        "Achieved an average training accuracy of 99.1% and testing accuracy of 98.4% for multiclass seizure classification",
+        "Technologies: Python, Tensorflow, Keras, MNE, PyEDF, NumPy, Pandas, and Matplotlib"
+      ],
+      "startDate": "2022-02-01",
+      "endDate": "2022-11-01",
+      "url": ""
+    },
+    {
+      "name": "KneeViT: Hybrid Architecture for Knee MRI Classification",
+      "summary": "Developed novel hybrid architecture combining VGG Transformer and OverLoCK ConvNet for knee MRI classification.",
+      "highlights": [
+        "Achieved AUC scores of 0.919 (abnormal), 0.809 (ACL tear), and 0.760 (meniscus Tear) with average of 0.845 after 50 epochs",
+        "Technologies: Python, TensorFlow, PyTorch, NumPy, and Scikit-learn"
+      ],
+      "startDate": "2025-01-01",
+      "endDate": "Present",
+      "url": ""
+    },
+    {
+      "name": "Indigenous Development of a Low-Cost EEG Acquisition System",
+      "summary": "Developed a functional prototype of an EEG acquisition system to amplify the EEG signal 150 times.",
+      "highlights": [
+        "Carried out live testing of the prototype using Ambu EEG electrodes and visualised the signal using 12-bit ADC",
+        "Technologies: C with Arduino IDE"
+      ],
+      "startDate": "2022-09-01",
+      "endDate": "2023-05-01",
+      "url": ""
+    }
+  ]
+}

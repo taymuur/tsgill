@@ -1,0 +1,134 @@
+- title: General Information
+  type: map
+  contents:
+    - name: Full Name
+      value: Taimur Shahzad Gill
+    - name: Email
+      value: taimuur.shahzad@gmail.com
+    - name: Phone
+      value: +92-321-248-9262
+    - name: Location
+      value: Karachi, Pakistan
+    - name: Languages
+      value: English (Native), Urdu (Native), Hindi (Fluent)
+
+- title: Education
+  type: time_table
+  contents:
+    - title: Masters in Data Science for Biology
+      institution: University of East Anglia, Norwich, United Kingdom
+      year: Sep 2025 - Present
+      description:
+        - Current student pursuing advanced data science techniques for biological applications
+        - Coursework includes Data Science & Bioinformatics, Statistics for Biologists, Data Mining
+    - title: Bachelors in Electrical Engineering
+      institution: National University of Sciences and Technology, Islamabad, Pakistan
+      year: Sep 2019 - Jun 2023
+      description:
+        - GPA: 3.31/4.00
+        - Relevant coursework with high grades in Machine Learning (A), Digital Image Processing (A), AI & Decision Support Systems (B+)
+        - First-author journal publication in Epilepsy & Behavior achieving 98.4% accuracy
+        - 3 first-author conference publications
+        - Co-founder of NUST Robotics and Artificial Intelligence
+        - Runner-up in Hi-Robotec Robofiesta 2.0
+    - title: GCE Ordinary and Advanced Level
+      institution: Army Public School and Colleges System, Karachi, Pakistan
+      year: May 2013 - Jun 2019
+      description:
+        - Highest Achiever in Class of 2019
+        - Graduated with distinction: 2A*s, 5As, and 1B
+        - College Head Boy
+        - Winner of Inter-College Cycling Championship
+
+- title: Experience
+  type: time_table
+  contents:
+    - title: Honorary Research Assistant
+      institution: Nixon Research Group, University of Liverpool, United Kingdom
+      year: May 2025 - Present
+      description:
+        - Leading TimeGPT development for Influenza surveillance achieving RMSE of 873.27 for 1-week forecast
+        - Outperformed traditional models using advanced time series techniques
+        - Conducting seasonal pattern analysis for SFTS using Complex EMD and harmonic regression
+        - Achieved R²=0.848 using harmonic regression for disease transmission cycles
+        - Applied bi-coherence analysis to identify multi-scale disease patterns
+    - title: Project Engineer
+      institution: Asia Petroleum Limited, Karachi, Pakistan
+      year: Aug 2023 - Apr 2025
+      description:
+        - Applied AI and machine learning techniques to optimize petroleum operations
+        - Developed data-driven solutions for industrial process improvement
+        - Collaborated with cross-functional teams on engineering projects
+
+- title: Research Projects
+  type: time_table
+  contents:
+    - title: <a href="https://github.com/taymuur">MHA-CNN for Epileptic Seizure Classification</a>
+      year: 2023
+      description: Novel CNN with multi-headed attention achieving 98.4% accuracy on multiclass seizure classification. Published in Epilepsy & Behavior journal.
+    - title: Hybrid ESN-LSTM for Stock Forecasting
+      year: 2024
+      description: Advanced time series model achieving R² of 0.975 and 94.12% directional accuracy on KSE-100. Presented at ICRAI 2024.
+    - title: IoT Power Theft Detection System
+      year: 2022
+      description: Smart monitoring system for electricity distribution networks using Raspberry Pi. 18 citations, real-world implementation potential.
+
+- title: Publications & Research Impact
+  type: time_table
+  contents:
+    - year: 2023-2024
+      items:
+        - 4 First-author publications
+        - 24+ Citations (Google Scholar)
+        - H-index of 3
+        - 1,310+ hours of research experience
+        - 15+ Projects completed
+        - 8 Research collaborations
+
+- title: Honors and Awards
+  type: time_table
+  contents:
+    - year: 2019
+      items:
+        - Highest Achiever in Class of 2019
+        - College Head Boy
+    - year: 2022
+      items:
+        - Runner-up Hi-Robotec Robofiesta 2.0
+    - year: 2018
+      items:
+        - Winner Inter-College Cycling Championship
+
+- title: Technical Skills
+  type: nested_list
+  contents:
+    - title: Programming Languages
+      items:
+        - Python (4+ years, 95% proficiency)
+        - MATLAB (3+ years, 85% proficiency)
+        - C/C++ (3+ years, 80% proficiency)
+        - SQL (2+ years, 75% proficiency)
+        - HTML/CSS (2+ years, 85% proficiency)
+        - JavaScript (1+ years, 70% proficiency)
+    - title: Machine Learning & AI Frameworks
+      items:
+        - TensorFlow (3+ years, 90% proficiency)
+        - Keras (3+ years, 90% proficiency)
+        - PyTorch (2+ years, 85% proficiency)
+        - Scikit-learn (4+ years, 95% proficiency)
+        - OpenCV (2+ years, 80% proficiency)
+        - Pandas & NumPy (4+ years, 95% proficiency)
+    - title: Tools & Technologies
+      items:
+        - Linux (3+ years, 85% proficiency)
+        - Git (3+ years, 80% proficiency)
+        - Power BI & Tableau (2+ years)
+        - SPSS & KNIME (2+ years)
+        - LaTeX (3+ years, 90% proficiency)
+
+- title: Research Interests
+  type: list
+  contents:
+    - <u>Primary:</u> Artificial Intelligence, Machine Learning, Computer Vision, Biomedical Signal Processing
+    - <u>Secondary:</u> Deep Learning, Neural Networks, Medical Imaging, Time Series Forecasting
+    - <u>Applications:</u> Digital Health, IoT Systems, Financial Markets, Healthcare AI

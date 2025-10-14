@@ -1,0 +1,13 @@
+github_users:
+  - taymuur
+
+repo_description_lines_max: 2
+
+github_repos:
+  - taymuur/AI-Based-Lawyer
+  - taymuur/ESP32-PN5180-PN532
+  - taymuur/Bytewise-DataScience
+  - taymuur/Data-Science-DataCamp
+  - taymuur/Leverify-Data-Analytics
+  - taymuur/exploratory-data-analyses
+  - taymuur/power-quality-dashboard

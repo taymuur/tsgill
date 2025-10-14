@@ -1,0 +1,184 @@
+/*******************************************************************************
+ * Projects - Enhanced al-folio Theme (Subtle Improvements)
+ ******************************************************************************/
+
+.projects {
+  // Keep original al-folio structure with subtle enhancements
+  a {
+    text-decoration: none;
+
+    &:hover {
+      .card-title {
+        color: var(--global-theme-color);
+      }
+
+      .card {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        border-color: var(--global-theme-color);
+      }
+
+      .card-img-top {
+        transform: scale(1.03);
+      }
+    }
+  }
+
+  .card {
+    background-color: var(--global-card-bg-color);
+    border: 1px solid var(--global-divider-color);
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    .card-img-top {
+      transition: transform 0.3s ease;
+      object-fit: cover;
+      height: 200px;
+    }
+
+    .card-body {
+      padding: 1.5rem;
+
+      .card-title {
+        color: var(--global-text-color);
+        transition: color 0.3s ease;
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
+      }
+
+      .card-text {
+        color: var(--global-text-color-light);
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+
+      // Simple project metrics - matching al-folio style
+      .project-metrics {
+        margin-bottom: 1rem;
+        padding: 0.5rem 0;
+        border-top: 1px solid var(--global-divider-color);
+        border-bottom: 1px solid var(--global-divider-color);
+
+        small {
+          color: var(--global-text-color-light);
+          font-size: 0.8rem;
+          font-weight: 500;
+
+          &:first-child {
+            color: var(--global-theme-color);
+          }
+        }
+      }
+
+      // GitHub section styling
+      .row {
+        .github-icon {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          .icon a {
+            color: var(--global-text-color-light);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+
+            &:hover {
+              color: var(--global-theme-color);
+              transform: scale(1.1);
+            }
+          }
+
+          .stars {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.8rem;
+            color: var(--global-text-color-light);
+
+            i {
+              color: #fbbf24;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .col {
+    padding-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .grid-sizer,
+  .grid-item {
+    width: 250px;
+    margin-bottom: 15px;
+  }
+
+  // Enhanced category styling
+  h2.category {
+    color: var(--global-text-color);
+    border-bottom: 2px solid var(--global-theme-color);
+    padding-top: 0.75rem;
+    padding-bottom: 0.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    font-size: 1.4rem;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--global-theme-color);
+    }
+  }
+
+  // Responsive improvements
+  @media (max-width: 768px) {
+    .col {
+      padding-bottom: 1rem;
+    }
+
+    .card {
+      .card-body {
+        padding: 1.25rem;
+
+        .card-title {
+          font-size: 1rem;
+        }
+
+        .card-text {
+          font-size: 0.85rem;
+        }
+      }
+    }
+
+    h2.category {
+      font-size: 1.2rem;
+      margin-top: 2rem;
+    }
+  }
+}
+
+// Dark mode enhancements
+html[data-theme="dark"] {
+  .projects {
+    .card {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+      &:hover {
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+}
