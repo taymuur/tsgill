@@ -8,7 +8,7 @@
     - name: Phone
       value: +92-321-248-9262
     - name: Location
-      value: Karachi, Pakistan
+      value: Norwich, United Kingdom
     - name: Languages
       value: English (Native), Urdu (Native), Hindi (Fluent)
 
@@ -43,15 +43,22 @@
 - title: Experience
   type: time_table
   contents:
+    - title: Visiting Student Researcher
+      institution: Earlham Institute, Norwich Research Park, United Kingdom
+      year: Nov 2025 - Present
+      description:
+        - Conducting MSc dissertation research on in silico prediction of pathogenic cell types and pathways in Crohn's Disease under supervision of Prof Irene Papatheodorou and Dr Gregory Wickham
+        - Integrating multi-omics data including bulk RNA-seq and single-cell RNA-seq from Crohn's Disease patient cohorts with clinical metadata to identify disease-progression trajectories
+        - Performing cell type deconvolution on bulk RNA-seq data using state-of-the-art algorithms including CIBERSORTx, MuSiC, and Bisque wrapped in the CATD pipeline
+        - Analysing single-cell RNA-seq data using the EISCA pipeline for quality control, normalization, clustering, and cell type annotation to identify pathogenic cell subtypes
+        - Developing machine learning models to integrate deconvolved cell type proportions, cell-type-specific gene expression signatures, and clinical parameters to predict disease biomarkers and progression trajectories
+        - Working with large-scale GEO datasets including GSE57945 (359 paediatric samples), GSE192786 (40 Crohn's biopsies), and GSE93624 (235 paediatric samples)
     - title: Honorary Research Assistant
       institution: Nixon Research Group, University of Liverpool, United Kingdom
       year: May 2025 - Present
       description:
-        - Leading TimeGPT development for Influenza surveillance achieving RMSE of 873.27 for 1-week forecast
-        - Outperformed traditional models using advanced time series techniques
-        - Conducting seasonal pattern analysis for SFTS using Complex EMD and harmonic regression
-        - Achieved R²=0.848 using harmonic regression for disease transmission cycles
-        - Applied bi-coherence analysis to identify multi-scale disease patterns
+        - Developed and evaluated TimeGPT for Influenza surveillance, achieving RMSE of 873.27 for 1-week forecast, outperforming traditional models (NumPy, Matplotlib, Pandas, Scikit-learn, and TimeGPT)
+        - Led seasonal pattern analysis for SFTS in South Korea using Complex EMD, harmonic regression (R²=0.848), and bicoherence analysis to identify multi-scale disease transmission cycles (Python, R, and Epidemiological Modelling)
     - title: Project Engineer
       institution: Asia Petroleum Limited, Karachi, Pakistan
       year: Aug 2023 - Apr 2025
@@ -129,6 +136,6 @@
 - title: Research Interests
   type: list
   contents:
-    - <u>Primary:</u> Artificial Intelligence, Machine Learning, Computer Vision, Biomedical Signal Processing
-    - <u>Secondary:</u> Deep Learning, Neural Networks, Medical Imaging, Time Series Forecasting
-    - <u>Applications:</u> Digital Health, IoT Systems, Financial Markets, Healthcare AI
+    - <u>Primary:</u> Computational Biology, Single-Cell Genomics, Multi-Omics Integration, Machine Learning for Healthcare
+    - <u>Secondary:</u> Biomarker Discovery, Cell Type Deconvolution, Disease Modelling, Time Series Forecasting
+    - <u>Applications:</u> Digital Health, Precision Medicine, Biomedical Signal Processing, Inflammatory Bowel Disease
