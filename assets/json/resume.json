@@ -1,18 +1,18 @@
 {
   "basics": {
     "name": "Taimur Shahzad Gill",
-    "label": "AI Researcher & Data Scientist",
+    "label": "Computational Biologist & AI Researcher",
     "image": "",
     "email": "taimuur.shahzad@gmail.com",
     "phone": "+92-321-248-9262",
-    "url": "https://taimur-shahzad.github.io/portfolio",
-    "summary": "A research-focused electrical engineer with 1,310+ hours of research experience in AI, computer vision, and biomedical signal processing. Published 4 first-author papers with proven ability to develop novel computational architectures for complex healthcare challenges. Seeking to advance digital health solutions through AI-driven systems that translate complex biological data into actionable clinical insights for improved patient outcomes.",
+    "url": "https://taymuur.github.io/tsgill",
+    "summary": "A computational researcher with 1,310+ hours of research experience spanning AI, biomedical signal processing, and computational biology. Currently pursuing a Masters in Data Science for Biology at the University of East Anglia whilst serving as a Visiting Student Researcher at the Earlham Institute and Honorary Research Assistant at the Nixon Research Group, University of Liverpool. Published 4 first-author papers with expertise in machine learning, single-cell genomics, cell type deconvolution, and disease biomarker discovery.",
     "location": {
       "address": "",
       "postalCode": "",
-      "city": "Karachi",
-      "countryCode": "PK",
-      "region": "Pakistan"
+      "city": "Norwich",
+      "countryCode": "GB",
+      "region": "United Kingdom"
     },
     "profiles": [
       {
@@ -33,6 +33,23 @@
     ]
   },
   "work": [
+    {
+      "name": "Earlham Institute, Norwich Research Park",
+      "position": "Visiting Student Researcher",
+      "location": "Norwich, United Kingdom",
+      "url": "https://www.earlham.ac.uk/",
+      "startDate": "2025-11-01",
+      "endDate": "Present",
+      "summary": "",
+      "highlights": [
+        "Conducting MSc dissertation research on in silico prediction of pathogenic cell types and pathways in Crohn's Disease under supervision of Prof Irene Papatheodorou and Dr Gregory Wickham",
+        "Integrating multi-omics data including bulk RNA-seq and single-cell RNA-seq from Crohn's Disease patient cohorts with clinical metadata to identify disease-progression trajectories",
+        "Performing cell type deconvolution on bulk RNA-seq data using state-of-the-art algorithms including CIBERSORTx, MuSiC, and Bisque wrapped in the CATD pipeline",
+        "Analysing single-cell RNA-seq data using the EISCA pipeline for quality control, normalization, clustering, and cell type annotation to identify pathogenic cell subtypes",
+        "Developing machine learning models to integrate deconvolved cell type proportions, cell-type-specific gene expression signatures, and clinical parameters to predict disease biomarkers and progression trajectories",
+        "Working with large-scale GEO datasets including GSE57945 (359 paediatric samples), GSE192786 (40 Crohn's biopsies), and GSE93624 (235 paediatric samples)"
+      ]
+    },
     {
       "name": "Nixon Research Group, University of Liverpool",
       "position": "Honorary Research Assistant",
