@@ -11,8 +11,6 @@ profile:
   more_info: >
     <p>Visiting Student Researcher</p>
     <p>Earlham Institute, Norwich Research Park</p>
-    <p>Honorary Research Assistant</p>
-    <p>Nixon Research Group, University of Liverpool</p>
     <p><a href='mailto:taimuur.shahzad@gmail.com'>taimuur.shahzad@gmail.com</a></p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
