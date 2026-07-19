@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Container, Section } from "@/components/ui";
 import { Figure } from "@/components/figures";
+import { DeconvExplorer } from "@/components/deconv-explorer";
 import { projects, getProject } from "@/content/projects";
 
 export function generateStaticParams() {
@@ -44,10 +45,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <h1 className="font-display mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">{project.title}</h1>
         <p className="mt-4 text-lg text-text-muted">{project.short}</p>
 
-        {project.figure !== "none" && (
+        {project.slug === "crohns-deconvolution" ? (
           <div className="mt-10">
-            <Figure kind={project.figure} />
+            <DeconvExplorer />
           </div>
+        ) : (
+          project.figure !== "none" && (
+            <div className="mt-10">
+              <Figure kind={project.figure} />
+            </div>
+          )
         )}
 
         {/* Results */}
