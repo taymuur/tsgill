@@ -2,10 +2,22 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import type { ComponentType } from "react";
 import { Container, Section } from "@/components/ui";
 import { Figure } from "@/components/figures";
 import { DeconvExplorer } from "@/components/deconv-explorer";
+import { EEGExplorer } from "@/components/eeg-explorer";
+import { ForecastExplorer } from "@/components/forecast-explorer";
+import { EMDExplorer } from "@/components/emd-explorer";
 import { projects, getProject } from "@/content/projects";
+
+/** Case studies with a bespoke interactive figure (else fall back to a static one). */
+const INTERACTIVE: Record<string, ComponentType> = {
+  "crohns-deconvolution": DeconvExplorer,
+  "epilepsy-seizure": EEGExplorer,
+  "timegpt-influenza": ForecastExplorer,
+  "sfts-seasonal": EMDExplorer,
+};
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -27,6 +39,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const project = getProject(slug);
   if (!project) notFound();
 
+  const Interactive = INTERACTIVE[project.slug];
+
   return (
     <Section>
       <Container className="max-w-3xl">
@@ -45,9 +59,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <h1 className="font-display mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">{project.title}</h1>
         <p className="mt-4 text-lg text-text-muted">{project.short}</p>
 
-        {project.slug === "crohns-deconvolution" ? (
+        {Interactive ? (
           <div className="mt-10">
-            <DeconvExplorer />
+            <Interactive />
           </div>
         ) : (
           project.figure !== "none" && (
