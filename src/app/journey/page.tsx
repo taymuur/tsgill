@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Container, Section, Eyebrow } from "@/components/ui";
 import { JourneyMap } from "@/components/journey-map";
 import { milestones } from "@/content/journey";
+import { copy } from "@/content/copy";
 
 export const metadata: Metadata = {
   title: "Journey",
-  description: "From electrical engineering in Islamabad to single-cell genomics in Norwich.",
+  description: copy.journey.lead,
 };
 
 const kindColor: Record<string, string> = {
@@ -20,14 +21,9 @@ export default function JourneyPage() {
     <>
       <Section className="pb-8">
         <Container className="max-w-3xl">
-          <Eyebrow>Journey</Eyebrow>
-          <h1 className="font-display mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-            From Islamabad to Norwich Research Park.
-          </h1>
-          <p className="mt-4 text-lg text-text-muted">
-            An electrical engineer who followed the signal — from EEG and image processing, through epidemiology, into
-            the cells and genomes of computational biology.
-          </p>
+          <Eyebrow>{copy.journey.eyebrow}</Eyebrow>
+          <h1 className="font-display mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">{copy.journey.title}</h1>
+          <p className="mt-4 text-lg text-text-muted">{copy.journey.lead}</p>
         </Container>
       </Section>
 

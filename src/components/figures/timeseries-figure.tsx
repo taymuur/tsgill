@@ -2,15 +2,19 @@
 
 import { useMemo, useState } from "react";
 
-/**
- * Forecast horizon explorer: drag the horizon and watch the forecast extend and
- * its uncertainty widen. RMSE @ 1 week (873.27) is the reported figure; longer
- * horizons scale it illustratively to show error growth.
- */
+export type TimeseriesProps = {
+  title?: string;
+  caption?: string;
+  note?: string;
+  controlLabel?: string;
+  unit?: string;
+  readoutLabel?: string;
+  baseValue?: number;
+};
 
 const W = 720;
 const H = 260;
-const HISTORY = 44; // weeks of history
+const HISTORY = 44;
 const STEP = W / (HISTORY + 12);
 
 function seeded(seed: number) {
@@ -23,7 +27,16 @@ function seeded(seed: number) {
   };
 }
 
-export function ForecastExplorer() {
+/** Generic history curve + adjustable forecast horizon. Topic-agnostic. */
+export function TimeseriesFigure({
+  title,
+  caption,
+  note,
+  controlLabel = "horizon",
+  unit = "w",
+  readoutLabel = "error",
+  baseValue = 100,
+}: TimeseriesProps) {
   const [horizon, setHorizon] = useState(4);
 
   const { histPath, foreData } = useMemo(() => {
@@ -37,14 +50,12 @@ export function ForecastExplorer() {
     const max = Math.max(...vals) + 0.6;
     const yOf = (v: number) => H - 20 - ((v - min) / (max - min)) * (H - 40);
     const histPath = vals.map((v, i) => `${i ? "L" : "M"}${(i * STEP).toFixed(1)} ${yOf(v).toFixed(1)}`).join(" ");
-
-    // Forecast continues the last seasonal trajectory.
     const last = vals[HISTORY - 1];
     const foreData = Array.from({ length: 12 }, (_, h) => {
       const i = HISTORY - 1 + h;
       const seasonal = Math.sin(i / 7) * 0.7 + Math.sin(i / 3.1) * 0.15;
       const v = h === 0 ? last : seasonal;
-      return { x: i * STEP, v, y: yOf(v), band: 6 + h * 3.2 };
+      return { x: i * STEP, y: yOf(v), band: 6 + h * 3.2 };
     });
     return { histPath, foreData };
   }, []);
@@ -57,19 +68,20 @@ export function ForecastExplorer() {
     [...shown].reverse().map((p) => `L${p.x.toFixed(1)} ${(p.y + p.band).toFixed(1)}`).join(" ") +
     " Z";
   const splitX = (HISTORY - 1) * STEP;
-  const rmse = (873.27 * Math.sqrt(horizon)).toFixed(2);
+  const readout = (baseValue * Math.sqrt(horizon)).toFixed(2);
 
   return (
     <figure className="overflow-hidden rounded-2xl border border-border bg-surface">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-4 py-3">
-        <p className="mono-label">Influenza forecast · TimeGPT</p>
+        {(title || caption) && <p className="mono-label">{title ?? caption}</p>}
         <p className="mono-label">
-          RMSE <span className="text-accent">{rmse}</span> @ {horizon}w
+          {readoutLabel} <span className="text-accent">{readout}</span> @ {horizon}
+          {unit}
         </p>
       </div>
 
       <div className="p-4">
-        <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img" aria-label={`Influenza forecast at a ${horizon}-week horizon`}>
+        <svg viewBox={`0 0 ${W} ${H}`} className="w-full" role="img" aria-label={`Forecast at a ${horizon}-${unit} horizon`}>
           <line x1={splitX} y1={12} x2={splitX} y2={H - 12} stroke="var(--text-muted)" strokeOpacity={0.35} strokeDasharray="2 3" />
           <path d={bandPath} fill="var(--c5)" opacity={0.14} />
           <path d={histPath} fill="none" stroke="var(--c2)" strokeWidth={1.8} />
@@ -78,21 +90,22 @@ export function ForecastExplorer() {
       </div>
 
       <div className="flex items-center gap-3 border-t border-border px-4 py-3">
-        <span className="mono-label shrink-0">horizon</span>
+        <span className="mono-label shrink-0">{controlLabel}</span>
         <input
           type="range"
           min={1}
           max={11}
           value={horizon}
           onChange={(e) => setHorizon(Number(e.target.value))}
-          aria-label="Forecast horizon in weeks"
+          aria-label={`${controlLabel} in ${unit}`}
           className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-border accent-[var(--accent)]"
         />
-        <span className="mono-label w-10 shrink-0 text-right text-accent">{horizon}w</span>
+        <span className="mono-label w-10 shrink-0 text-right text-accent">
+          {horizon}
+          {unit}
+        </span>
       </div>
-      <figcaption className="mono-label border-t border-border px-4 py-2.5">
-        Error grows with horizon · RMSE anchored at 873.27 @ 1 week (illustrative scaling)
-      </figcaption>
+      {note && <figcaption className="mono-label border-t border-border px-4 py-2.5">{note}</figcaption>}
     </figure>
   );
 }

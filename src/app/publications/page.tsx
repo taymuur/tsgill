@@ -3,10 +3,11 @@ import { ArrowUpRight } from "lucide-react";
 import { Container, Section, Eyebrow } from "@/components/ui";
 import { SocialLinks } from "@/components/social-links";
 import { publications } from "@/content/publications";
+import { copy } from "@/content/copy";
 
 export const metadata: Metadata = {
   title: "Publications",
-  description: "Four first-author papers across neuroscience, forecasting, oncology and IoT systems.",
+  description: copy.publications.lead,
 };
 
 export default function PublicationsPage() {
@@ -14,13 +15,11 @@ export default function PublicationsPage() {
   return (
     <Section>
       <Container className="max-w-3xl">
-        <Eyebrow>Publications</Eyebrow>
+        <Eyebrow>{copy.publications.eyebrow}</Eyebrow>
         <h1 className="font-display mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-          Four first-author papers.
+          {copy.publications.title}
         </h1>
-        <p className="mt-4 text-lg text-text-muted">
-          24+ citations · h-index 3. Also on Google Scholar, ORCID and ResearchGate.
-        </p>
+        <p className="mt-4 text-lg text-text-muted">{copy.publications.lead}</p>
         <div className="mt-6">
           <SocialLinks />
         </div>

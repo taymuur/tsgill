@@ -4,30 +4,30 @@ import { Hero } from "@/components/hero";
 import { MetricBand } from "@/components/metric-band";
 import { Container, Section, SectionHeading, Eyebrow } from "@/components/ui";
 import { ProjectCard } from "@/components/project-card";
-import { Figure } from "@/components/figures";
-import { profile } from "@/content/profile";
+import { ProjectFigure } from "@/components/figures/project-figure";
+import { site } from "@/config/site";
+import { copy } from "@/content/copy";
 import { projects } from "@/content/projects";
 import { thesisRows } from "@/content/thesis";
 
 const featured = projects.filter((p) => [1, 2, 3, 4].includes(p.importance));
-const narrative = thesisRows.filter((r) => ["epilepsy-seizure", "crohns-deconvolution", "sfts-seasonal"].includes(r.slug));
-const figureFor: Record<string, "eeg" | "deconv" | "emd"> = {
-  "epilepsy-seizure": "eeg",
-  "crohns-deconvolution": "deconv",
-  "sfts-seasonal": "emd",
-};
+// The narrative shows a few projects that carry an interactive figure.
+const narrative = projects
+  .filter((p) => p.figure.type !== "none")
+  .slice(0, 3)
+  .map((p) => ({ project: p, row: thesisRows.find((r) => r.slug === p.slug) }));
 
 export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: profile.name,
-    jobTitle: "Computational Biologist",
-    email: profile.email,
-    affiliation: ["Earlham Institute", "University of East Anglia"],
-    url: "https://taymuur.github.io",
-    sameAs: Object.values(profile.socials).filter((s) => s.startsWith("http")),
+    name: site.name,
+    email: site.email,
+    url: site.seo.url,
+    sameAs: Object.values(site.socials).filter((s) => s.startsWith("http")),
   };
+
+  const nowParts = copy.home.now.body.split("{accent}");
 
   return (
     <>
@@ -38,27 +38,25 @@ export default function Home() {
       {/* Thesis / narrative */}
       <Section>
         <Container>
-          <SectionHeading
-            eyebrow="The through-line"
-            title="One move, across every field."
-            lead="Whether the input is a voltage trace, a transcriptome, or an epidemic curve, the work is the same: decomposing a mixed signal into the interpretable parts that explain it."
-          />
+          <SectionHeading eyebrow={copy.home.thesis.eyebrow} title={copy.home.thesis.title} lead={copy.home.thesis.lead} />
           <div className="grid gap-6 lg:grid-cols-3">
-            {narrative.map((row) => (
-              <div key={row.slug} className="flex flex-col gap-4">
-                <Figure kind={figureFor[row.slug]} />
+            {narrative.map(({ project, row }) => (
+              <div key={project.slug} className="flex flex-col gap-4">
+                <ProjectFigure spec={project.figure} />
                 <div>
-                  <p className="mono-label">{row.domain}</p>
-                  <p className="mt-1 text-sm text-text-muted">
-                    <span className="text-text">{row.signal}</span> → {row.resolved}
-                  </p>
+                  <p className="mono-label">{row?.domain ?? project.domain}</p>
+                  {row && (
+                    <p className="mt-1 text-sm text-text-muted">
+                      <span className="text-text">{row.signal}</span> → {row.resolved}
+                    </p>
+                  )}
                 </div>
               </div>
             ))}
           </div>
           <div className="mt-10">
-            <Link href="/research" className="inline-flex items-center gap-1 text-sm text-accent hover:underline">
-              Read the full argument <ArrowUpRight size={15} />
+            <Link href={copy.home.thesis.moreHref} className="inline-flex items-center gap-1 text-sm text-accent hover:underline">
+              {copy.home.thesis.moreLabel} <ArrowUpRight size={15} />
             </Link>
           </div>
         </Container>
@@ -67,7 +65,7 @@ export default function Home() {
       {/* Featured work */}
       <Section className="border-t border-border">
         <Container>
-          <SectionHeading eyebrow="Selected work" title="Projects with real results." />
+          <SectionHeading eyebrow={copy.home.featured.eyebrow} title={copy.home.featured.title} />
           <div className="grid gap-6 md:grid-cols-2">
             {featured.map((p) => (
               <ProjectCard key={p.slug} project={p} />
@@ -75,7 +73,7 @@ export default function Home() {
           </div>
           <div className="mt-10">
             <Link href="/projects" className="inline-flex items-center gap-1 text-sm text-accent hover:underline">
-              All projects <ArrowUpRight size={15} />
+              {copy.home.featured.allLabel} <ArrowUpRight size={15} />
             </Link>
           </div>
         </Container>
@@ -84,25 +82,26 @@ export default function Home() {
       {/* Now */}
       <Section className="border-t border-border">
         <Container className="max-w-3xl">
-          <Eyebrow>Now</Eyebrow>
+          <Eyebrow>{copy.home.now.eyebrow}</Eyebrow>
           <p className="font-display mt-4 text-2xl leading-relaxed sm:text-3xl">
-            Currently at the <span className="text-accent">Earlham Institute</span>, predicting the pathogenic cell
-            types and pathways behind Crohn&apos;s disease from bulk and single-cell RNA-seq — while finishing an MSc in
-            Data Science for Biology at the University of East Anglia.
+            {nowParts[0]}
+            <span className="text-accent">{copy.home.now.accent}</span>
+            {nowParts[1]}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/contact"
-              className="rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-[var(--bg)] hover:opacity-90"
-            >
-              Get in touch
-            </Link>
-            <Link
-              href="/journey"
-              className="rounded-full border border-border px-5 py-2.5 text-sm hover:border-accent hover:text-accent"
-            >
-              See the journey
-            </Link>
+            {copy.home.now.ctas.map((cta) => (
+              <Link
+                key={cta.href}
+                href={cta.href}
+                className={
+                  cta.variant === "outline"
+                    ? "rounded-full border border-border px-5 py-2.5 text-sm hover:border-accent hover:text-accent"
+                    : "rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-[var(--bg)] hover:opacity-90"
+                }
+              >
+                {cta.label}
+              </Link>
+            ))}
           </div>
         </Container>
       </Section>
