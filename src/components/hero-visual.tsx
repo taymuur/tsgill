@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import { site } from "@/config/site";
 import { HeroFieldSVG } from "./hero-field";
 
 const HeroCanvas = dynamic(() => import("./hero-canvas"), { ssr: false });
@@ -16,10 +17,12 @@ function webglSupported() {
 }
 
 /**
- * Renders the static cluster field on the server and as a fallback, then upgrades
- * to the live WebGL deconvolution once mounted (when WebGL is available).
+ * Renders the static clustered field on the server / as a fallback, then upgrades
+ * to the live WebGL background when available. All look settings come from
+ * `site.hero.background` in the config.
  */
 export function HeroVisual() {
+  const bg = site.hero.background;
   const [canUseGL, setCanUseGL] = useState(false);
   useEffect(() => {
     // WebGL support is only knowable on the client.
@@ -27,6 +30,6 @@ export function HeroVisual() {
     setCanUseGL(webglSupported());
   }, []);
 
-  if (canUseGL) return <HeroCanvas />;
-  return <HeroFieldSVG />;
+  if (canUseGL) return <HeroCanvas cfg={bg} />;
+  return <HeroFieldSVG palette={bg.palette} groups={bg.groups} />;
 }

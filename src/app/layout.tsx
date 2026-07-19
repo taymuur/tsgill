@@ -4,7 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
-import { profile } from "@/content/profile";
+import { site } from "@/config/site";
+import { siteUrl } from "@/lib/site-url";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -23,15 +24,15 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://taymuur.github.io"),
+  metadataBase: new URL(siteUrl()),
   title: {
-    default: `${profile.name} — Computational Biologist`,
-    template: `%s — ${profile.name}`,
+    default: site.seo.title,
+    template: `%s — ${site.name}`,
   },
-  description: profile.blurb,
+  description: site.seo.description,
   openGraph: {
-    title: `${profile.name} — Computational Biologist`,
-    description: profile.thesis,
+    title: site.seo.title,
+    description: site.hero.subheading,
     type: "website",
   },
   twitter: { card: "summary_large_image" },

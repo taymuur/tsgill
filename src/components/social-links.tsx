@@ -1,6 +1,6 @@
 import { Mail, GraduationCap, BookOpen, Fingerprint } from "lucide-react";
 import type { SVGProps } from "react";
-import { profile } from "@/content/profile";
+import { site } from "@/config/site";
 
 function GithubIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -19,18 +19,20 @@ function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
 }
 
 const items = [
-  { key: "github", label: "GitHub", href: profile.socials.github, Icon: GithubIcon },
-  { key: "linkedin", label: "LinkedIn", href: profile.socials.linkedin, Icon: LinkedinIcon },
-  { key: "scholar", label: "Google Scholar", href: profile.socials.scholar, Icon: GraduationCap },
-  { key: "orcid", label: "ORCID", href: profile.socials.orcid, Icon: Fingerprint },
-  { key: "researchgate", label: "ResearchGate", href: profile.socials.researchgate, Icon: BookOpen },
-  { key: "email", label: "Email", href: profile.socials.email, Icon: Mail },
+  { key: "github", label: "GitHub", href: site.socials.github, Icon: GithubIcon },
+  { key: "linkedin", label: "LinkedIn", href: site.socials.linkedin, Icon: LinkedinIcon },
+  { key: "scholar", label: "Google Scholar", href: site.socials.scholar, Icon: GraduationCap },
+  { key: "orcid", label: "ORCID", href: site.socials.orcid, Icon: Fingerprint },
+  { key: "researchgate", label: "ResearchGate", href: site.socials.researchgate, Icon: BookOpen },
+  { key: "email", label: "Email", href: site.socials.email, Icon: Mail },
 ];
 
 export function SocialLinks({ className = "" }: { className?: string }) {
   return (
     <div className={`flex flex-wrap items-center gap-2 ${className}`}>
-      {items.map(({ key, label, href, Icon }) => (
+      {items
+        .filter((i) => i.href)
+        .map(({ key, label, href, Icon }) => (
         <a
           key={key}
           href={href}

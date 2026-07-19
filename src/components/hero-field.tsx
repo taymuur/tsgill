@@ -1,5 +1,3 @@
-const clusterColors = ["#35e0c2", "#7c9cff", "#ff8a5b", "#b98cff", "#4ed8ff", "#ffd166", "#f871a0"];
-
 function rng(seed: number) {
   let s = seed;
   return () => {
@@ -8,11 +6,11 @@ function rng(seed: number) {
   };
 }
 
-/** Static "resolved clusters" field — SSR/no-WebGL/reduced-motion fallback for the hero. */
-export function HeroFieldSVG() {
+/** Static clustered dot field — SSR / no-WebGL / reduced-motion fallback. Topic-agnostic. */
+export function HeroFieldSVG({ palette, groups }: { palette: readonly string[]; groups: number }) {
   const rand = rng(42);
-  const clusters = clusterColors.map((c, i) => ({
-    c,
+  const clusters = Array.from({ length: groups }, (_, i) => ({
+    c: palette[i % palette.length],
     cx: 120 + (i % 4) * 250 + rand() * 80,
     cy: 120 + Math.floor(i / 4) * 260 + rand() * 60,
   }));

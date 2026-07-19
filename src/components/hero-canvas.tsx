@@ -4,17 +4,12 @@ import { useMemo, useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-const CLUSTER_COLORS = [
-  "#35e0c2",
-  "#7c9cff",
-  "#ff8a5b",
-  "#b98cff",
-  "#4ed8ff",
-  "#ffd166",
-  "#f871a0",
-];
-
-const COUNT = 7000;
+type Cfg = {
+  mode: "clusters" | "field";
+  groups: number;
+  count: number;
+  palette: readonly string[];
+};
 
 function usePrefersReducedMotion() {
   const [reduced, setReduced] = useState(false);
@@ -45,7 +40,7 @@ function makeSprite() {
   return tex;
 }
 
-function Cloud({ reduced }: { reduced: boolean }) {
+function Cloud({ reduced, cfg }: { reduced: boolean; cfg: Cfg }) {
   const ref = useRef<THREE.Points>(null);
   const start = useRef<number | null>(null);
 
@@ -60,20 +55,22 @@ function Cloud({ reduced }: { reduced: boolean }) {
       return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
     };
 
+    const COUNT = cfg.count;
+    const groups = Math.max(1, cfg.groups);
     const bulk = new Float32Array(COUNT * 3);
     const target = new Float32Array(COUNT * 3);
     const colors = new Float32Array(COUNT * 3);
 
-    // 7 cluster centroids arranged in a loose ring (UMAP-like).
-    const centroids = CLUSTER_COLORS.map((_, i) => {
-      const a = (i / CLUSTER_COLORS.length) * Math.PI * 2;
+    // Group centroids arranged in a loose ring.
+    const centroids = Array.from({ length: groups }, (_, i) => {
+      const a = (i / groups) * Math.PI * 2;
       const r = 4.6;
       return new THREE.Vector3(Math.cos(a) * r, Math.sin(a) * r * 0.62, (rand() - 0.5) * 1.4);
     });
 
     const col = new THREE.Color();
     for (let i = 0; i < COUNT; i++) {
-      const k = i % CLUSTER_COLORS.length;
+      const k = i % groups;
 
       // Bulk: one indistinct central blob.
       const br = Math.pow(rand(), 0.5) * 2.4;
@@ -83,16 +80,23 @@ function Cloud({ reduced }: { reduced: boolean }) {
       bulk[i * 3 + 1] = br * Math.sin(bp) * Math.sin(bt) * 0.8;
       bulk[i * 3 + 2] = br * Math.cos(bp);
 
-      // Target: resolved into the point's cluster.
-      const c = centroids[k];
-      const tr = Math.pow(rand(), 0.7) * 1.15;
-      const ta = rand() * Math.PI * 2;
-      const tp = Math.acos(2 * rand() - 1);
-      target[i * 3] = c.x + tr * Math.sin(tp) * Math.cos(ta);
-      target[i * 3 + 1] = c.y + tr * Math.sin(tp) * Math.sin(ta);
-      target[i * 3 + 2] = c.z + tr * Math.cos(tp);
+      if (cfg.mode === "field") {
+        // Field: a calm wide spread (no tight resolution).
+        target[i * 3] = (rand() - 0.5) * 13;
+        target[i * 3 + 1] = (rand() - 0.5) * 8;
+        target[i * 3 + 2] = (rand() - 0.5) * 4;
+      } else {
+        // Clusters: each point resolves into its group.
+        const c = centroids[k];
+        const tr = Math.pow(rand(), 0.7) * 1.15;
+        const ta = rand() * Math.PI * 2;
+        const tp = Math.acos(2 * rand() - 1);
+        target[i * 3] = c.x + tr * Math.sin(tp) * Math.cos(ta);
+        target[i * 3 + 1] = c.y + tr * Math.sin(tp) * Math.sin(ta);
+        target[i * 3 + 2] = c.z + tr * Math.cos(tp);
+      }
 
-      col.set(CLUSTER_COLORS[k]);
+      col.set(cfg.palette[k % cfg.palette.length]);
       colors[i * 3] = col.r;
       colors[i * 3 + 1] = col.g;
       colors[i * 3 + 2] = col.b;
@@ -103,7 +107,7 @@ function Cloud({ reduced }: { reduced: boolean }) {
     geometry.setAttribute("position", new THREE.BufferAttribute(initial, 3));
     geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
     return { geometry, sprite: makeSprite(), bulk, target };
-  }, [reduced]);
+  }, [reduced, cfg]);
 
   useFrame((state) => {
     const pts = ref.current;
@@ -144,7 +148,7 @@ function Cloud({ reduced }: { reduced: boolean }) {
   );
 }
 
-export default function HeroCanvas() {
+export default function HeroCanvas({ cfg }: { cfg: Cfg }) {
   const reduced = usePrefersReducedMotion();
   const [failed, setFailed] = useState(false);
   if (failed) return null;
@@ -158,7 +162,7 @@ export default function HeroCanvas() {
       onError={() => setFailed(true)}
       aria-hidden
     >
-      <Cloud reduced={reduced} />
+      <Cloud reduced={reduced} cfg={cfg} />
     </Canvas>
   );
 }
