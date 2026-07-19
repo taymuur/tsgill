@@ -6,6 +6,7 @@ import { Container, Section, SectionHeading, Eyebrow } from "@/components/ui";
 import { ProjectCard } from "@/components/project-card";
 import { ProjectFigure } from "@/components/figures/project-figure";
 import { site } from "@/config/site";
+import { siteUrl } from "@/lib/site-url";
 import { copy } from "@/content/copy";
 import { projects } from "@/content/projects";
 import { thesisRows } from "@/content/thesis";
@@ -23,7 +24,7 @@ export default function Home() {
     "@type": "Person",
     name: site.name,
     email: site.email,
-    url: site.seo.url,
+    url: siteUrl(),
     sameAs: Object.values(site.socials).filter((s) => s.startsWith("http")),
   };
 

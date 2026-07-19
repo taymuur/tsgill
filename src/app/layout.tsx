@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { site } from "@/config/site";
+import { siteUrl } from "@/lib/site-url";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -23,7 +24,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.seo.url),
+  metadataBase: new URL(siteUrl()),
   title: {
     default: site.seo.title,
     template: `%s — ${site.name}`,
