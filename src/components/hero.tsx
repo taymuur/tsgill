@@ -2,55 +2,13 @@ import Link from "next/link";
 import { ArrowDown } from "lucide-react";
 import { profile } from "@/content/profile";
 import { Container } from "./ui";
-
-const clusterColors = ["#35e0c2", "#7c9cff", "#ff8a5b", "#b98cff", "#4ed8ff", "#ffd166", "#f871a0"];
-
-function rng(seed: number) {
-  let s = seed;
-  return () => {
-    s = (s * 1103515245 + 12345) & 0x7fffffff;
-    return s / 0x7fffffff;
-  };
-}
-
-/** Deterministic "resolved clusters" field — the static form of the hero deconvolution. */
-function HeroField() {
-  const rand = rng(42);
-  const clusters = clusterColors.map((c, i) => ({
-    c,
-    cx: 120 + (i % 4) * 250 + rand() * 80,
-    cy: 120 + Math.floor(i / 4) * 260 + rand() * 60,
-  }));
-  const dots = Array.from({ length: 520 }, (_, i) => {
-    const cl = clusters[i % clusters.length];
-    const a = rand() * Math.PI * 2;
-    const r = rand() * 90 * (0.4 + rand());
-    return {
-      x: cl.cx + Math.cos(a) * r,
-      y: cl.cy + Math.sin(a) * r,
-      c: cl.c,
-      d: (rand() * 6).toFixed(2),
-    };
-  });
-  return (
-    <svg
-      viewBox="0 0 1200 640"
-      className="absolute inset-0 h-full w-full"
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden
-    >
-      {dots.map((d, i) => (
-        <circle key={i} cx={d.x} cy={d.y} r={2} fill={d.c} className="hero-dot" style={{ animationDelay: `${d.d}s` }} />
-      ))}
-    </svg>
-  );
-}
+import { HeroVisual } from "./hero-visual";
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-border">
-      <div className="pointer-events-none absolute inset-0 opacity-60 [mask-image:radial-gradient(80%_80%_at_70%_30%,black,transparent)]">
-        <HeroField />
+      <div className="pointer-events-none absolute inset-0 opacity-70 [mask-image:radial-gradient(85%_85%_at_68%_35%,black,transparent)]">
+        <HeroVisual />
       </div>
       <Container className="relative flex min-h-[82vh] flex-col justify-center py-24">
         <p className="mono-label mb-6">{profile.roles[0]} · Norwich, UK</p>
@@ -74,7 +32,7 @@ export function Hero() {
         </div>
         <div className="mt-16 flex items-center gap-2 text-text-muted">
           <ArrowDown size={16} className="animate-bounce" aria-hidden />
-          <span className="mono-label">Scroll — watch the signal resolve</span>
+          <span className="mono-label">Watch the signal resolve into cell types</span>
         </div>
       </Container>
     </section>
